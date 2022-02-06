@@ -28,6 +28,30 @@ paths:
       responses:
         "200":
           description: "Success"
+    post:
+      tags:
+      - "student"
+      summary: "Ajouter un nouvel étudiant"
+      description: ""
+      operationId: "addStudent"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Le nouvel étudiant à ajouter à la liste"
+        required: true
+        schema:
+          $ref: "#/definitions/Student"
+      responses:
+        "200":
+          description: "Success"
+        "405":
+          description: "Invalid input"
 definitions:
   Student:
     type: "object"
