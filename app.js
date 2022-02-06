@@ -6,6 +6,7 @@ const dotenv = require('dotenv');
 const jwt = require('jsonwebtoken');
 var routeStudent = require('./routes/student')
 var routeUser = require('./routes/user')
+var cors = require('cors')
 
 dotenv.config();
 var mongoDB = `mongodb+srv://${process.env.PWD_USER}:${process.env.PWD_BD}@clustercesi.bt6qj.mongodb.net/cesi?retryWrites=true&w=majority`;
@@ -17,6 +18,8 @@ db.on('Error', console.error.bind(console, "MongoDB connection error"))
 const ObjectID = mongoose.Types.ObjectId;
 
 app.use(express.json());
+
+app.use(cors())
 
 var requestTime = function (req, res, next) {
   req.requestTime = Date.now();
