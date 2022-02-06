@@ -1,0 +1,16 @@
+swagger: "2.0"
+info:
+  description: "Voici la documentation des API du projet Express CESI disponible sur le repository [https://github.com/Loise/express-cesi](https://github.com/Loise/express-cesi)"
+  version: "1.0.0"
+  title: "Swagger Express CESI 2022"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "loise.fenoll@gmail.com"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/"
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
