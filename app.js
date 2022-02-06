@@ -36,8 +36,8 @@ app.get('/', (req, res) => {
   res.send(`Hello World! ---- request time ${req.requestTime}`)
 });
 
-app.use('/',routeStudent);
-app.use('/',routeUser);
+app.use('/student/',routeStudent);
+app.use('/user/',routeUser);
 
 
 app.listen(port, () => {
