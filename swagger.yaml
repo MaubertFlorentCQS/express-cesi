@@ -11,6 +11,36 @@ info:
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "localhost:3000"
 basePath: "/"
+tags:
+- name: "student"
+  description: "Gestion des étudiants"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+schemes:
+- "http"
+paths:
+  /student:
+    get:
+      tags:
+      - "student"
+      summary: "Liste des étudiants"
+      responses:
+        "200":
+          description: "Success"
+definitions:
+  Student:
+    type: "object"
+    required:
+    - "name"
+    - "age"
+    properties:
+      name:
+        type: "string"
+        example: "harry potter"
+      age:
+        type: "integer"
+        example: 22
 externalDocs:
   description: "Find out more about Swagger"
   url: "http://swagger.io"
