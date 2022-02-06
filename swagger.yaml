@@ -11,14 +11,14 @@ info:
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
 host: "localhost:3000"
 basePath: "/"
+schemes:
+- "http"
 tags:
 - name: "student"
   description: "Gestion des étudiants"
   externalDocs:
     description: "Find out more"
     url: "http://swagger.io"
-schemes:
-- "http"
 paths:
   /student:
     get:
