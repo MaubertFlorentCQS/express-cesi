@@ -92,6 +92,15 @@ paths:
           description: "Success"
         "405":
           description: "Invalid input"
+  parameters: [
+  {
+  "name": "Authorization",
+  "in": "header",
+  "description": "JWT access token",
+  "required": true,
+  "type": "string"
+  }
+  ]
 definitions:
   Student:
     type: "object"
