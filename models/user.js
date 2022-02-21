@@ -7,6 +7,7 @@ var userSchema = mongoose.Schema({
 	email: String,
 	CB: String,
 	password: String,
+	role: user,
 }, {
 	collection: 'Users'
 })

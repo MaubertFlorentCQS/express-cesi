@@ -4,6 +4,7 @@ var express = require('express');
 var app = express.Router();
 
 const User = require('../models/user');
+const { isValidObjectId } = require('mongoose');
 
 app.post('/signin', async (req, res, next) => {
 	let userCreated = await User.create(req.body)
@@ -21,7 +22,7 @@ app.post('/login', async (req, res) => {
 
 	if (user) {
 		//On génère le token
-		const accessToken=jwt.sign({email:user.email}, process.env.TOKEN_SECRET)
+		const accessToken=jwt.sign({email:user.email, role:user.role}, process.env.TOKEN_SECRET)
 
 		res.json({
 			accessToken
@@ -53,3 +54,34 @@ const authenticateJWT=(req,res,next)=>{
 		res.sendStatus(401);
 	}
 };
+/*
+//route /user/profile
+app.get('/profile', authenticateJWT, async (req,res) => {
+	const user=await User.findOne({email:res.user.email});
+	res.json(user);
+});
+
+//route /profile/:id
+app.get('/profile/:id', authenticateJWT, async (req,res)=>{
+	const{role}=req.user;
+	const id=req.params.id;
+
+	if(role!=='admin'){
+		return res.sendStatus(403);
+	}
+
+	const user=await User.findOne({_id: ObjectID(id)});
+	res.json(user);
+});
+*/
+app.get('/profile/:id', authenticateJWT, async (req,res)=>{
+	const id=req.params.id;
+	const user=await User.findOne({_id: ObjectID(id)});
+
+	res.json(user);
+});
+
+app.get('/profile', authenticateJWT, async (req,res)=>{
+	const user=await User.findOne({email:res.user.email});
+	res.json(user);
+});
