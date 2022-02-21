@@ -1,0 +1,84 @@
+swagger: "2.0"
+info:
+  description: "Voici la documentation des API du projet Express CESI disponible sur le repository [https://github.com/Loise/express-cesi](https://github.com/Loise/express-cesi)"
+  version: "1.0.0"
+  title: "Swagger Express CESI 2022"
+  termsOfService: "http://swagger.io/terms/"
+  contact:
+    email: "florent.maubert@viacesi.fr"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "localhost:3000"
+basePath: "/"
+schemes:
+- "http"
+tags:
+- name: "student"
+  description: "Gestion des étudiants"
+  externalDocs:
+    description: "Find out more"
+    url: "http://swagger.io"
+paths:
+  /student/{id}:
+    delete:
+      tags:
+      - "student"
+      summary: "Liste des étudiants"
+      parameters:
+        - name: id
+          type: string
+          required: true
+          in: path
+          description: "User ID"
+      responses:
+        "200":
+          description: "Success"
+  /student:
+    get:
+      tags:
+      - "student"
+      summary: "Liste des étudiants"
+      responses:
+        "200":
+          description: "Success"
+    post:
+      tags:
+      - "student"
+      summary: "Ajouter un nouvel étudiant"
+      description: ""
+      operationId: "addStudent"
+      consumes:
+      - "application/json"
+      - "application/xml"
+      produces:
+      - "application/xml"
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Le nouvel étudiant à ajouter à la liste"
+        required: true
+        schema:
+          $ref: "#/definitions/Student"
+      responses:
+        "200":
+          description: "Success"
+        "405":
+          description: "Invalid input"
+definitions:
+  Student:
+    type: "object"
+    required:
+    - "name"
+    - "age"
+    properties:
+      name:
+        type: "string"
+        example: "harry potter"
+      age:
+        type: "integer"
+        example: 22
+externalDocs:
+  description: "Find out more about Swagger"
+  url: "http://swagger.io"
